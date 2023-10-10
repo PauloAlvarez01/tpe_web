@@ -17,13 +17,33 @@ switch ($params[0]) {
         $controller= new VinotecaController();
         $controller->showVinos(); 
         break;
+    case 'mostrarVino':
+        $controller= new VinotecaController();
+        $controller->showVino($params[1]); 
+        break;
     case 'mostrarBodega':
         $controller= new VinotecaController();
         $controller->showBodega($params[1]); 
         break;
+    case 'mostrarBodegas':
+        $controller= new VinotecaController();
+        $controller->showBodegas(); 
+        break;
     case 'mostrarCepa':
         $controller= new VinotecaController();
         $controller->showCepa($params[1]); 
+        break;
+    case 'mostrarCepas':
+        $controller= new VinotecaController();
+        $controller->showCepas(); 
+        break;
+    case 'mostrarVinosPorBodega':
+        $controller= new VinotecaController();
+        $controller->showVinosPorBodega($params[1]); 
+        break;
+    case 'mostrarVinosPorCepa':
+        $controller= new VinotecaController();
+        $controller->showVinosPorCepa($params[1]); 
         break;
     default: 
         $controller= new VinotecaController();

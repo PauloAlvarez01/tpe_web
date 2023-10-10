@@ -7,4 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<nav>
+    <a href="listas">Vinos</a>
+    <a href="mostrarBodegas">Bodegas</a>
+    <a href="mostrarCepas">Cepas</a>
+</nav>
 
