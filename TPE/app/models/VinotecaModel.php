@@ -71,7 +71,8 @@ class VinotecaModel {
         return $vinos;
     }
 
-
-    
-   
+    function updateVino($Nombre, $Tipo, $Azucar, $id_bodega, $id_cepa, $id) {    
+        $query = $this->db->prepare('UPDATE `vino` SET Nombre=?, Tipo=?, Azucar=?, id_cepa=?, id_bodega =? WHERE ID_vino = ?');
+        $query->execute([$Nombre, $Tipo, $Azucar, $id_bodega, $id_cepa, $id]);
+    }
 }

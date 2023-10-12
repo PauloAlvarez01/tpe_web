@@ -10,9 +10,11 @@ class VinotecaView{
         echo "<ul>";
             foreach($vinos as $vino){
                 
-                echo"<li><a href='mostrarVino/$vino->ID_vino'>$vino->Nombre</a> - <a href='mostrarCepa/$vino->id_cepa'>$vino->Nombre_cepa</a> - <a href='mostrarBodega/$vino->id_bodega'>$vino->Nombre_bodega</a></li> ";
+                echo"<li><a href='mostrarVino/$vino->ID_vino'>$vino->Nombre</a> - <a href='mostrarCepa/$vino->id_cepa'>$vino->Nombre_cepa</a> - <a href='mostrarBodega/$vino->id_bodega'>$vino->Nombre_bodega</a> - <a href='eliminarVino/$vino->ID_vino' >Borrar</a> - <a href='modificarVino/$vino->ID_vino' >Modificar</a> </li> ";
             }
         echo "</ul>";
+
+        echo "<a href='agregarVino' >Agregar</a>";
     }
 
     public function showVinosPorBodega($vinos, $bodega){
@@ -63,8 +65,8 @@ class VinotecaView{
                 <tr>
                     <td>$vino->Tipo</td>
                     <td>$vino->Azucar</td>
-                    <td>$vino->Nombre_cepa</td>
-                    <td>$vino->Nombre_bodega</td>
+                    <td><a href='mostrarCepa/$vino->id_cepa'>$vino->Nombre_cepa</a></td>
+                    <td><a href='mostrarBodega/$vino->id_bodega'>$vino->Nombre_bodega</a></td>
                 </tr>
                 </tbody>    
             </table>";
@@ -79,21 +81,20 @@ class VinotecaView{
         echo "<ul>";
             foreach($bodegas as $bodega){
                 
-                echo"<li><a href='mostrarVinosPorBodega/$bodega->id_bodega'>$bodega->Nombre_bodega</a> ";
+                echo"<li><a href='mostrarVinosPorBodega/$bodega->id_bodega'>$bodega->Nombre_bodega</a> - <a href='eliminarBodega/$bodega->id_bodega' >Borrar</a> - <a href='modificarBodega/$bodega->id_bodega' >Modificar</a> </li>";
             }
         echo "</ul>";
+
+        echo "<a href='agregarBodega' >Agregar</a>";
     }
 
 
     public function showBodega($bodega){
 
         require 'templates/header.php';
-        echo "<a href='listar'> Home </a>";
-    
+            
         echo "<h1>Info bodega: $bodega->Nombre_bodega </h2>";
-        echo "<a href='listar'> Volver </a>";
-
-        
+                
         echo "<table>
                 <thead>
                     <tr>
@@ -122,18 +123,18 @@ class VinotecaView{
         echo "<ul>";
             foreach($cepas as $cepa){
                 
-                echo"<li><a href='mostrarVinosPorCepa/$cepa->id_cepa'>$cepa->Nombre_cepa</a>";
+                echo"<li><a href='mostrarVinosPorCepa/$cepa->id_cepa'>$cepa->Nombre_cepa</a> <a href='eliminarCepa/$cepa->id_cepa' >Borrar</a> - <a href='modificarCepa/$cepa->id_cepa' >Modificar</a> </li>";
             }
         echo "</ul>";
+
+        echo "<a href='agregarCepa' >Agregar</a>";
     }
 
     public function showCepa($cepa){
         require 'templates/header.php';
     
         echo "<h1>Info cepa: $cepa->Nombre_cepa </h2>";
-        echo "<a href='listar'> Home </a>";
-
-        
+                
         echo "<table>
                 <thead>
                     <tr>
@@ -151,6 +152,16 @@ class VinotecaView{
                 </tr>
                 </tbody>    
             </table>";
+    }
+
+    public function showFormularioModificar($id, $vino, $bodegas, $cepas){
+        require 'templates/header.php';
+        
+        require 'templates/formulario_modificacion.phtml';
+    
+    }
+    public function showError($error) {
+        echo"$error";
     }
 }
     

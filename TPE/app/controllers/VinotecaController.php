@@ -54,4 +54,29 @@ class VinotecaController {
         $this->view->showVinosPorCepa($vinos, $cepa);
     }
 
+    public function showModificarVino($id){
+        $vino = $this->model->getVino($id);
+        $bodegas = $this->model->getBodegas();
+        $cepas = $this->model->getCepas();
+        $this->view->showFormularioModificar($id, $vino, $bodegas, $cepas);
+    }
+
+    public function modificarVino($id){
+        $Nombre = $_POST['Nombre'];
+        $Tipo = $_POST['Tipo'];
+        $Azucar = $_POST['Azucar'];
+        $id_bodega = $_POST['id_bodega'];
+        $id_cepa = $_POST['id_cepa'];
+
+        if (empty($Nombre) || empty($Tipo) || empty($Azucar) || empty($id_bodega) || empty($id_cepa)) {
+            $this->view->showError("Debe completar todos los campos");
+        }
+        else{
+            $this->model->updateVino($Nombre, $Tipo, $Azucar, $id_bodega, $id_cepa, $id);
+            header('Location: ' . BASE_URL);
+        }
+        
+       
+    }
+
 }

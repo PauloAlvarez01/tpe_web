@@ -9,7 +9,7 @@
 </head>
 <nav>
     <a href="listas">Vinos</a>
-    <a href="mostrarBodegas">Bodegas</a>
-    <a href="mostrarCepas">Cepas</a>
+    <a href="mostrarBodegas">Buscar por Bodegas</a>
+    <a href="mostrarCepas">Buscar por Cepas</a>
 </nav>
 
