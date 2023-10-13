@@ -1,11 +1,9 @@
 <?php
 
-class UserModel {
-    private $db;
+require_once 'app/models/Model.php';
 
-    function __construct() {
-        $this->db = new PDO('mysql:host=localhost;dbname=db_vinoteca;charset=utf8', 'root', '');
-    }
+class UserModel extends Model {
+    
 
     public function getByEmail($email) {
         $query = $this->db->prepare('SELECT * FROM `usuario` WHERE `email` = ?');
