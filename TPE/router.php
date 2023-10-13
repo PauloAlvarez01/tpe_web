@@ -1,5 +1,7 @@
 <?php
 
+require_once 'config.php';
+
 require_once './app/controllers/VinotecaController.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -37,6 +39,14 @@ switch ($params[0]) {
         $controller= new VinotecaController();
         $controller->showCepas(); 
         break;
+    case 'buscarVinosPorBodega':
+        $controller= new VinotecaController();
+        $controller->showBuscarPorBodega(); 
+        break;
+    case 'buscarVinosPorCepa':
+        $controller= new VinotecaController();
+        $controller->showBuscarPorCepa(); 
+        break;
     case 'mostrarVinosPorBodega':
         $controller= new VinotecaController();
         $controller->showVinosPorBodega($params[1]); 
@@ -59,6 +69,10 @@ switch ($params[0]) {
         break;
     case 'agregarVino':
         $controller= new VinotecaController();
+        $controller->showAgregarVino(); 
+        break;
+    case 'enviarAgregarVino':
+        $controller= new VinotecaController();
         $controller->agregarVino(); 
         break;
     case 'eliminarBodega':
@@ -74,6 +88,10 @@ switch ($params[0]) {
         $controller->modificarBodega($params[1]); 
         break;
     case 'agregarBodega':
+        $controller= new VinotecaController();
+        $controller->showAgregarBodega(); 
+        break;
+    case 'enviarAgregarBodega':
         $controller= new VinotecaController();
         $controller->agregarBodega(); 
         break;
@@ -91,7 +109,23 @@ switch ($params[0]) {
         break;
     case 'agregarCepa':
         $controller= new VinotecaController();
+        $controller->showAgregarCepa(); 
+        break;
+    case 'enviarAgregarCepa':
+        $controller= new VinotecaController();
         $controller->agregarCepa(); 
+        break;
+    case 'login':
+        $controller = new AuthController();
+        $controller->showLogin(); 
+        break;
+    case 'auth':
+        $controller = new AuthController();
+        $controller->auth();
+        break;
+    case 'logout':
+        $controller = new AuthController();
+        $controller->logout();
         break;
     default: 
         $controller= new VinotecaController();

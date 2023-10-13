@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-10-2023 a las 17:37:38
+-- Tiempo de generación: 13-10-2023 a las 00:11:47
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -44,7 +44,11 @@ INSERT INTO `bodega` (`id_bodega`, `Nombre_bodega`, `Ubicación`, `Año`, `Carac
 (2, 'Bodegas Chandon S.A.', 'Dirección: Ruta 15 Km 29, Agrelo, Lújan de Cu', 1923, 'Las burbujas son el corazón de nuestra compañía y son aquello a lo que nos dedicamos desde nuestros orígenes. Son años de aprendizajes y saberes, de esfuerzos y celebraciones, desplegados con sabiduría y pasión para elaborar Chandon.'),
 (3, 'Bodegas Valentín Bianchi S.A.', 'Ruta 143 y calle Valentín Bianchi Alto Las Pa', 1945, 'El terroir de Valle de Uco es un hito para Bodegas Bianchi por que marca el inicio, el primer movimiento de nuestra estrategia de marca global.\r\nEs el crecimiento natural de nuestra historia de 90 años en la búsqueda de nuevos sabores para el mercado local e internacional.'),
 (4, 'Bodegas y Viñedos López S.A.', 'Ozamis Norte 375, Gral. Gutiérrez, Maipú, Men', 1898, 'Desde su fundación en 1898 Bodegas López representa un caso excepcional dentro de la industria vitivinícola argentina. Hoy continúa en manos de la familia fundadora, ofreciendo desde siempre la mejor calidad. Labrando una historia desde el trabajo, amor al detalle y pasión por los grandes vinos, res'),
-(5, 'Bodegas y Viñedos López S.A.', 'Ruta Panamericana y, C. Miguez, M5570 San Mar', 1934, 'El continuo esfuerzo por progresar, el equipo de trabajo, la innovación, la inversión en tecnología y la constante búsqueda por alcanzar la máxima expresión de los vinos que identifican las virtudes de nuestro terroir, han logrado que Los Haroldos sea reconocida por brindar al mercado vinos de excel');
+(5, 'Bodegas y Viñedos Los Haroldos', 'Ruta Panamericana y, C. Miguez, M5570 San Mar', 1934, 'El continuo esfuerzo por progresar, el equipo de trabajo, la innovación, la inversión en tecnología y la constante búsqueda por alcanzar la máxima expresión de los vinos que identifican las virtudes de nuestro terreno, han logrado que Los Haroldos sea reconocida por el mercado.'),
+(6, 'Ruttini Winnes', 'RP89 Tupungato Valle de Uco, Mendoza', 1925, 'Primer bodega en plantar viñedos en el Valle de Uco, reconocido hoy en el mundo como una de las principales regiones vitivinícolas de Mendoza y de toda Argentina'),
+(7, 'Bodega Septima', 'Ruta Internacional Nº7 - Km. 6,5 ', 1954, 'Nuestro nacimiento se encuadra en un modelo de bodegas que fue trascendental para la vitivinicultura argentina. Con muchos de los establecimientos que datan de comienzos del siglo XXI compartimos características similares que le aportaron prestigio y diversidad a la industria.'),
+(8, 'Bodega Mendel', 'Terrada 1863 - Luján de Cuyo Mendoza', 1943, 'Viñedos y Bodega Mendel surge de la unión de Roberto de la Mota, uno de los enólogos argentinos más respetados y experimentados, con una familia argentina comprometida en obtener vinos de la más alta calidad. Nuestra búsqueda es expresar el singular carácter de nuestros viñedos.'),
+(9, 'Navarro Correas', 'Ruta 15, KM 35 - Agrelo, Mendoza,', 1798, 'Dedicados a la vitivinicultura desde 1798. Vivimos el vino desde el terroir, y es en Finca Agrelo, al pie de la Cordillera de los Andes donde cada uno de nuestros vinos se concibe con la filosofía y el espíritu único que nos legó Don Juan de Dios Correas; quien en su afán incansable por superarse su');
 
 -- --------------------------------------------------------
 
@@ -76,6 +80,25 @@ INSERT INTO `cepa` (`id_cepa`, `Nombre_cepa`, `Aroma`, `Maridaje`, `Textura`) VA
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id_usuario` int(11) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `email`, `password`) VALUES
+(1, 'webadmin', 'admin');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `vino`
 --
 
@@ -98,7 +121,33 @@ INSERT INTO `vino` (`ID_vino`, `Nombre`, `Tipo`, `Azucar`, `id_cepa`, `id_bodega
 (3, 'ALTURA', 'Vino tinto', '1,80 gr/l.', 4, 1),
 (4, 'DON VALENTIN LACRADO', 'Vino tinto', '1,75 gr/l.', 4, 3),
 (5, 'DON VALENTIN LACRADO', 'Vino blanco', '1,66 gr/l.', 6, 3),
-(6, 'vino1', 'tinto', 'dulce', 3, 1);
+(6, 'MENDEL MALBEC DOC', 'tinto', '1,80 gr/l.', 4, 8),
+(7, 'LUNTA TORRONTES', 'Vino blanco', '1,80 gr/l.', 7, 8),
+(8, 'LUNTA TORRONTES', 'Vino blanco', '1,80 gr/l.', 2, 8),
+(9, 'SEPTIMA GRAN MALBEC', 'Vino Tinto', '1,75 gr/l.', 4, 7),
+(10, 'SEPTIMA 10 BARRICAS', 'Vino tinto', '1,66 gr/l.', 4, 7),
+(11, 'CONFIADO', 'Vino Tinto', '1,75 gr/l.', 2, 7),
+(12, 'SEPTIMA OBRA', 'Vino tinto', '1,86 gr/l.', 4, 7),
+(13, 'JUAN DE DIOS', 'Vino Tinto', 'Semi seco', 4, 9),
+(14, 'STRUCTURA', 'Vino tinto', 'Seco', 5, 9),
+(15, 'NAVARRO CORREAS RESERVA', 'Vino Tinto', 'Semi seco', 4, 9),
+(16, 'STRUCTURA ULTRA', 'Vino tinto', 'Seco', 4, 9),
+(17, 'NAVARRO CORREAS RESERVA', 'Vino blanco', 'Semi dulce', 2, 9),
+(18, 'DOLORES', 'Vino TINTO', 'Semi seco', 1, 9),
+(19, 'DOLORES', 'Vino blanco', 'Dulce', 2, 9),
+(20, 'DOLORES', 'Vino tinto', 'Semi seco', 4, 9),
+(21, 'DOLORES', 'Vino blanco', 'Dulce', 7, 9),
+(22, 'DOLORES', 'Vino tinto', 'Semi seco', 5, 9),
+(23, 'TRAFUL', 'Vino Tinto', 'Semi seco', 4, 4),
+(24, 'TRAFULL CHARDONNAY - SEMILLON', 'Vino blanco', 'Dulce', 2, 4),
+(25, 'MONTCHENOT', 'Vino Tinto', 'Semi seco', 4, 4),
+(26, 'CHATEAU VIEUX', 'Vino tinto', 'Seco', 1, 4),
+(27, 'MONTCHENOT', 'Vino Tinto', 'Semi seco', 4, 4),
+(28, 'CHATEAU VIEUX', 'Vino tinto', 'Seco', 1, 4),
+(29, 'LOPEZ', 'Vino Tinto', 'Semi seco', 4, 4),
+(30, 'CASONA LÓPEZ', 'Vino tinto', 'Semi seco', 4, 4),
+(31, 'LOPEZ', 'Vino Tinto', 'Semi seco', 4, 4),
+(32, 'CASONA LÓPEZ', 'Vino tinto', 'Semi seco', 4, 4);
 
 --
 -- Índices para tablas volcadas
@@ -117,6 +166,12 @@ ALTER TABLE `cepa`
   ADD PRIMARY KEY (`id_cepa`);
 
 --
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id_usuario`);
+
+--
 -- Indices de la tabla `vino`
 --
 ALTER TABLE `vino`
@@ -132,7 +187,7 @@ ALTER TABLE `vino`
 -- AUTO_INCREMENT de la tabla `bodega`
 --
 ALTER TABLE `bodega`
-  MODIFY `id_bodega` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_bodega` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `cepa`
@@ -141,10 +196,16 @@ ALTER TABLE `cepa`
   MODIFY `id_cepa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `vino`
 --
 ALTER TABLE `vino`
-  MODIFY `ID_vino` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID_vino` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Restricciones para tablas volcadas

@@ -40,7 +40,7 @@ class VinotecaView{
         echo "<ul>";
             foreach($vinos as $vino){
                 
-                echo"<li><a href='mostrarVino/$vino->ID_vino'>$vino->Nombre</a> - <a href='mostrarCepa/$vino->id_cepa'>$vino->Nombre_cepa</a> - <a href='mostrarBodega/$vino->id_bodega'>$vino->Nombre_bodega</a></li> ";
+                echo"<li><a href='mostrarVino/$vino->ID_vino'>$vino->Nombre</a> - <a href='mostrarBodega/$vino->id_bodega'>$vino->Nombre_bodega</a></li> ";
             }
         echo "</ul>";
     }
@@ -81,7 +81,7 @@ class VinotecaView{
         echo "<ul>";
             foreach($bodegas as $bodega){
                 
-                echo"<li><a href='mostrarVinosPorBodega/$bodega->id_bodega'>$bodega->Nombre_bodega</a> - <a href='eliminarBodega/$bodega->id_bodega' >Borrar</a> - <a href='modificarBodega/$bodega->id_bodega' >Modificar</a> </li>";
+                echo"<li><a href='mostrarBodega/$bodega->id_bodega'>$bodega->Nombre_bodega</a> - <a href='eliminarBodega/$bodega->id_bodega' >Borrar</a> - <a href='modificarBodega/$bodega->id_bodega' >Modificar</a> </li>";
             }
         echo "</ul>";
 
@@ -114,6 +114,21 @@ class VinotecaView{
             </table>";
     }
 
+    public function showBuscarPorBodega($bodegas){
+        
+        require 'templates/header.php';
+        
+        echo "<h1>Selecione una Bodega para buscar sus vinos</h1>";
+               
+        echo "<ul>";
+            foreach($bodegas as $bodega){
+                
+                echo"<li><a href='mostrarVinosPorBodega/$bodega->id_bodega'>$bodega->Nombre_bodega</a> </li>";
+            }
+        echo "</ul>";
+        
+    }
+
     public function showCepas($cepas){
         
         require 'templates/header.php';
@@ -123,7 +138,7 @@ class VinotecaView{
         echo "<ul>";
             foreach($cepas as $cepa){
                 
-                echo"<li><a href='mostrarVinosPorCepa/$cepa->id_cepa'>$cepa->Nombre_cepa</a> <a href='eliminarCepa/$cepa->id_cepa' >Borrar</a> - <a href='modificarCepa/$cepa->id_cepa' >Modificar</a> </li>";
+                echo"<li><a href='mostrarCepa/$cepa->id_cepa'>$cepa->Nombre_cepa</a> <a href='eliminarCepa/$cepa->id_cepa' >Borrar</a> - <a href='modificarCepa/$cepa->id_cepa' >Modificar</a> </li>";
             }
         echo "</ul>";
 
@@ -154,12 +169,61 @@ class VinotecaView{
             </table>";
     }
 
-    public function showFormularioModificar($id, $vino, $bodegas, $cepas){
+    public function showBuscarPorCepa($cepas){
+        
         require 'templates/header.php';
         
-        require 'templates/formulario_modificacion.phtml';
+        echo "<h1>Selecione una Cepa para buscar sus vinos</h1>";
+               
+        echo "<ul>";
+            foreach($cepas as $cepa){
+                
+                echo"<li><a href='mostrarVinosPorCepa/$cepa->id_cepa'>$cepa->Nombre_cepa</a> </li>";
+            }
+        echo "</ul>";
+        
+    }
+
+    public function showFormularioModificarVino($id, $vino, $bodegas, $cepas){
+        require 'templates/header.php';
+        
+        require 'templates/formulario_modificacion_vino.phtml';
+    }
+
+    public function showFormularioModificarBodega($id, $bodega){
+        require 'templates/header.php';
+        
+        require 'templates/formulario_modificacion_bodega.phtml';
     
     }
+
+    public function showFormularioModificarCepa($id, $cepa){
+        require 'templates/header.php';
+        
+        require 'templates/formulario_modificacion_cepa.phtml';
+    
+    }
+
+    public function showFormularioAgregarVino($bodegas, $cepas){
+        require 'templates/header.php';
+        
+        require 'templates/formulario_agregar_vino.phtml';
+    }
+
+    public function showFormularioAgregarBodega(){
+        require 'templates/header.php';
+        
+        require 'templates/formulario_agregar_bodega.phtml';
+    
+    }
+
+    public function showFormularioAgregarCepa(){
+        require 'templates/header.php';
+        
+        require 'templates/formulario_agregar_cepa.phtml';
+    
+    }
+
     public function showError($error) {
         echo"$error";
     }

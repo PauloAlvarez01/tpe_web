@@ -8,8 +8,13 @@
     <title>Document</title>
 </head>
 <nav>
-    <a href="listas">Vinos</a>
-    <a href="mostrarBodegas">Buscar por Bodegas</a>
-    <a href="mostrarCepas">Buscar por Cepas</a>
+    <a href="listar">Vinos</a>
+    <a href="mostrarBodegas">Bodegas</a>
+    <a href="mostrarCepas">Cepas</a>
+    <a href="buscarVinosPorBodega">Buscar por Bodegas</a>
+    <a href="buscarVinosPorCepa">Buscar por Cepas</a>
+    <div class="col">
+                <label class="btn btn-secondary" for="option2"><a href="login">Login</a></label>
+            </div>
 </nav>
 
